@@ -1,0 +1,72 @@
+<nav class="navbar" style="background-color: #198754;">
+    <div class="container-fluid">
+      <div class="col-md-4">
+          <h1 style="color: white;">Asignatura</h1>
+        </div>
+        <img style="border-radius: 70px; background-color: rgb(226, 223, 223);" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png" width="115" height="100">
+    </div> 
+</nav>
+
+<div class="col-md-12 p-2">
+    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-save"></i> Asignatura</button>
+    <table class="table mt-2 table-bordered">
+        <thead class="table-primary">
+          <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Numero de Creditos</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listAsignatura">
+              <td>{{item.codAsignatura}}</td>
+              <td>{{item.nomAsignatura}}</td>
+              <td>{{item.numCredAsignatura}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                &nbsp;
+                <button type="button" class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+            </tr>
+          </tbody>
+        
+      </table>
+</div>
+
+<!-- TODO: Modals -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Nueva Asignatura</h1>
+          <h1 class="modal-title fs-5">Modificar Asignatura</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formAsignatura">
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Nombre</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" formControlName="nomAsignatura">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Numero de creditos</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" formControlName="numCredAsignatura">
+                    </div>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success btn-sm">Guardar</button>
+          <button type="button" class="btn btn-warning btn-sm">Modificar</button>
+        </div>
+      </div>
+    </div>
+  </div>
